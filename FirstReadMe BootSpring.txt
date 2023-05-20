@@ -178,7 +178,36 @@ name: product-service
 ---------
 1:35:04 // Inter Process Communication
 1:38:23 // Call Inventory Service from Order Service
-1:38:47 // Create new config package in Order-service
+1:38:47 // Create new config file and package in Order-service
+@Configuration
+public class WebClientConfig {
+
+    @Bean
+    public WebClient webClient(){
+        return WebClient.builder().build();
+    }
+}
+1:39:40 // Spring Web Flux
+1:39:52 // Add Flux dependecies to order-service pom.xml
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+1:41:41 Add Webclient to OrderService class
+...
+    private final WebClient webClient;
+...
+        Boolean result = webClient.get()
+                .uri("http://localhost:9092/api/inventory")
+                .retrieve()
+                .bodyToMono(Boolean.class)
+                .block();
+...
+1:46:47 // Take sku-code list as a parameters.
+1:48:03 // Change isInStock method to list arguments.
+1:49:20 // Create findBySkuCodeIn() in InventoryRepository class
+1:50:35 // Create InventoryResponseDto
+1:53:58
 
 
 
