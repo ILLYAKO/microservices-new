@@ -207,11 +207,57 @@ public class WebClientConfig {
 1:48:03 // Change isInStock method to list arguments.
 1:49:20 // Create findBySkuCodeIn() in InventoryRepository class
 1:50:35 // Create InventoryResponseDto
-1:53:58
+1:53:58 // collect all sku-code in OrderService in order-service
+1:56:33 // Create InventoryResponseDto in order-service.dto
 
+2:00:15 // run POST in Postman
+{
+    "orderLineItemsDtoList": [
+        {
+            "skuCode": "iphone_13",
+            "price": 1200,
+            "quantity": "1"
+        },
+        {
+            "skuCode": "iphone_13_red",
+            "price": 1200,
+            "quantity": "0"
+        }
+    ]
+}
 
+2:02:01 // Service Discovery using Netflix Eureka
+2:03:54 // Service Discovery
+2:06:39 // Create discover-server module
+2:07:47 // Add library Netflix Eureka to pom.xml of discover-server module
+2:14:50 // Define Eureka client in the 3 services
+2:19:46 // Check Eureka status http://localhost:8761/
+2:20:50 // add application name in application.properties spring.application.name=product-service and restart app.
+2:22:34 // server.port=0 in application.properties the spring boot run random port
+2:23:12 // Allow parallel run (multiple instances) in Run/Debug Configuration
+// Replace localhost with application name in OrderService
+2:26:25 // Client Side Loadbalancing
+2:26:52 // in order-service config WebClientConfig add annotation
+    @Bean
+    @LoadBalanced
+    public WebClient.Builder webClient(){
+        return WebClient.builder();
+    }
 
+2:29:07 // Destruction test
+-------
+2:33:09 // Implement API Gateway using Spring Cloud Gateway
+2:39:04 // Create new maven module api-gateway
+add dependencies to pom.xml
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
+    </dependencies>
 
+2:41:46 // Create api-gateway resource/application.properties file
+2:45:27 // Define Routes
 
 
 

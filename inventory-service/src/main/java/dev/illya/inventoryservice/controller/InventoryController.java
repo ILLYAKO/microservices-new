@@ -21,10 +21,10 @@ public class InventoryController {
 //        return inventoryService.isInStock(skuCode);
 //    }
 
-    // http://localhost:9092/api/inventory?sku-code=iphone-13&sku-code=iphone-13-red
+    // http://localhost:9092/api/inventory?skuCode=iphone-13&skuCode=iphone-13-red
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    public List<InventoryResponseDto> isInStock(@RequestParam List<String> skuCodes) {
-        return inventoryService.isInStock(skuCodes);
+    public List<InventoryResponseDto> isInStock(@RequestParam List<String> skuCode) {
+        return inventoryService.isInStock(skuCode);
     }
 }
